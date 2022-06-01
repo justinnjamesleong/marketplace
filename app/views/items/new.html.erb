@@ -1,5 +1,20 @@
-<h1>New Item</h1>
 
-<%= render 'form', item: @item %>
 
-<%= link_to 'Back', items_path %>
+<div class="pt-3 grid-container">
+  <div class="user-card">
+    <h1>KickAuction</h1>
+    <p>Welcome back <%= @user.username %>!</p>
+  </div>
+
+    <div class="user-balance mt-4 d-flex flex-row">
+        <i class="fa-regular fa-wallet fa-2xl" style="margin-top:26px"></i>
+        <h5 class="ml-3 p-3"> <%= @user.credit %></h5>
+    </div>
+</div>
+
+
+  <h1>New Item</h1>
+
+  <%= render 'form', item: @item %>
+
+  <%= link_to 'Back', items_path %>

@@ -13,6 +13,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @user = current_user
   end
 
   # GET /items/1/edit
