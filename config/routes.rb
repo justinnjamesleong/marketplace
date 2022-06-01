@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :reviews
   resources :items
-  resources :itemtypes
+  resources :item_types
   resources :franchises
   resources :auctions
   devise_for :users

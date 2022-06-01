@@ -1,4 +1,5 @@
-class ItemtypesController < ApplicationController
+
+class ItemTypesController < ApplicationController
   before_action :set_itemtype, only: %i[ show edit update destroy ]
 
   # GET /itemtypes or /itemtypes.json
@@ -21,11 +22,11 @@ class ItemtypesController < ApplicationController
 
   # POST /itemtypes or /itemtypes.json
   def create
-    @itemtype = ItemType.new(itemtype_params)
+    @itemtype = ItemType.new(item_type_params)
 
     respond_to do |format|
       if @itemtype.save
-        format.html { redirect_to itemtype_url(@itemtype), notice: "ItemType was successfully created." }
+        format.html { redirect_to item_type_url(@itemtype), notice: "ItemType was successfully created." }
         format.json { render :show, status: :created, location: @itemtype }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -37,12 +38,12 @@ class ItemtypesController < ApplicationController
   # PATCH/PUT /itemtypes/1 or /itemtypes/1.json
   def update
     respond_to do |format|
-      if @itemtype.update(itemtype_params)
-        format.html { redirect_to itemtype_url(@itemtype), notice: "ItemType was successfully updated." }
+      if @itemtype.update(item_type_params)
+        format.html { redirect_to item_type_url(@itemtype), notice: "ItemType was successfully updated." }
         format.json { render :show, status: :ok, location: @itemtype }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @itemtype.errors, status: :unprocessable_entity }
+        format.json { render json: @item_type.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,7 +53,7 @@ class ItemtypesController < ApplicationController
     @itemtype.destroy
 
     respond_to do |format|
-      format.html { redirect_to itemtypes_url, notice: "ItemType was successfully destroyed." }
+      format.html { redirect_to item_types_url, notice: "ItemType was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -64,7 +65,7 @@ class ItemtypesController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def itemtype_params
-      params.require(:itemtype).permit(:name)
+    def item_type_params
+      params.require(:item_type).permit(:name)
     end
 end
