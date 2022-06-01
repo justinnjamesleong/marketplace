@@ -1,0 +1,2 @@
+class Reviewed < ApplicationRecord
+end

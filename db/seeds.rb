@@ -5,42 +5,45 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-user = User.new(username:"potatoe",email:"potato@gmail.com",password:"124566")
-user.save
+require 'faker'
 
-franchise = Franchise.new(name: "potato")
-franchise.save
+10.times do
+  franchise = Franchise.new(name: Faker::Appliance.brand)
+  franchise.save
 
-itemtype = ItemType.new(name: "shoes")
-itemtype.save
+  itemtype = ItemType.new(name: Faker::ElectricalComponents.active)
+  itemtype.save
+end
 
-flyknit = Item.new(name: "flyknit", description: "potato")
-flyknit.franchise = Franchise.first
-flyknit.item_type = ItemType.first
-flyknit.owner = User.last
-flyknit.creator = User.last
+10.times do
+  user = User.new(username:Faker::Name.name,email:Faker::Internet.email,password:"124566")
+  user.save
+end
 
-flyknit.save!
+10.times do
+  flyknit = Item.new(name: Faker::Science.element, description: Faker::Space.galaxy)
+  flyknit.franchise = Franchise.all.sample
+  flyknit.item_type = ItemType.all.sample
+  flyknit.owner = User.all.sample
+  flyknit.creator = User.all.sample
 
-review = Review.new(comment:"ptoato",rating:5)
-review.item = Item.first
-review.user = User.last
-review.save
-puts "review ok"
+  flyknit.save!
 
-time = Time.now()
-auction = Auction.new(start_time:time, end_time:time, minimum_bid:500)
-auction.item = Item.first
-auction.save
+  review = Review.new(comment: Faker::Space.nasa_space_craft, rating: (1..5).to_a.sample)
+  review.item = Item.all.sample
+  review.user = User.all.sample
+  review.save
 
-puts "auction ok"
+  time = Time.now()
+  auction = Auction.new(start_time:time, end_time:time+(10000..20000).to_a.sample, minimum_bid:(100..500).to_a.sample)
+  auction.item = Item.all.sample
+  auction.save
 
-bid = Bid.new(bid_time:time)
-bid.buyer = User.last
-bid.buyer_id = 10
-bid.auction = Auction.first
-bid.save
+  bid = Bid.new(bid_time:time)
+  bid.buyer = User.all.sample
+  bid.bid_amount = (100..1000).to_a.sample
+  bid.auction = Auction.all.sample
+  bid.save
 
-puts "bid ok!"
-
-puts "done!"
+  puts "done!"
+end
