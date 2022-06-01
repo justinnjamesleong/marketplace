@@ -1,1 +1,43 @@
-<%= @user.username %>
+<div class="pt-3 grid-container">
+  <div class="user-card">
+    <h1>KickAuction</h1>
+    <p>Welcome back <%= @user.username %>!</p>
+  </div>
+
+    <div class="user-balance mt-4 d-flex flex-row">
+        <i class="fa-regular fa-wallet fa-2xl" style="margin-top:26px"></i>
+        <h5 class="ml-3 p-3"> <%= @user.credit %></h5>
+    </div>
+</div>
+
+<div class="d-flex justify-content-around">
+<%= link_to new_item_path do %>
+  <button class="btn btn-dark user-button" style="border-radius:20px">List a creation</button>
+<% end %>
+
+<%= link_to root_path do %>
+  <button class="btn btn-dark user-button" style="border-radius:20px">Go to auctions</button>
+<% end %>
+
+  <button class="btn btn-dark user-button" style="border-radius:20px">Top up credit</button>
+</div>
+
+<div>
+<div class="user-item-cards p-2">
+<% @item.each do |item| %>
+<div class="user-item-card-category p-2 bg-light">
+  <div class="user-item-name mx-auto">
+    <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:100%"%>
+  <ul class="pl-0 pt-1" style="list-style-type:none;size">
+    <li>Name: <%= item.name %></li>
+    <li>Description: <%= item.description %></li>
+    <li>Item Type: <%= item.item_type.name %></li>
+    <li>Franchise: <%= item.franchise.name %></li>
+  </ul>
+  </div>
+
+
+</div>
+<% end %>
+</div>
+</div>

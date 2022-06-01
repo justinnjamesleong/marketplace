@@ -6,8 +6,8 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :description %>
-    <%= f.association :creator  %>
-    <%= f.association :owner  %>
+    <%= f.association :creator, label_method: :username, disabled: true %>
+    <%= f.association :owner, label_method: :username, disabled: true  %>
     <%= f.association :franchise %>
     <%= f.association :item_type %>
   </div>
