@@ -1,0 +1,5 @@
+<ul>
+  <%= @itemtypes.each do |itemtype|%>
+    <li><%= link_to itemtype.name, item_type_path(itemtype) %></li>
+  <% end %>
+</ul>

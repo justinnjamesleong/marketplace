@@ -1,1 +1,9 @@
 <%= @user.username %>
+<%= "your creations" %>
+<ul>
+  <% @creations.each do |creation| %>
+    <li><%= creation.name %> <br>
+    <%= creation.franchise.name %> <br>
+    <%= creation.item_type.name %></li>
+  <% end %>
+</ul>

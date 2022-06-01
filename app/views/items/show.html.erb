@@ -12,22 +12,22 @@
 
 <p>
   <strong>Creator:</strong>
-  <%= @item.creator %>
+  <%= @item.creator.username %>
 </p>
 
 <p>
   <strong>Owner:</strong>
-  <%= @item.owner %>
+  <%= @item.owner.username %>
 </p>
 
 <p>
   <strong>Franchise:</strong>
-  <%= @item.franchise_id %>
+  <%= @item.franchise.name %>
 </p>
 
 <p>
   <strong>Itemtype:</strong>
-  <%= @item.item_type_id %>
+  <%= @item.item_type.name %>
 </p>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
