@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   # GET /items or /items.json
   def index
     @items = Item.all
+    authorize @items
   end
 
   # GET /items/1 or /items/1.json
@@ -13,6 +14,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    # authorize @item
   end
 
   # GET /items/1/edit
