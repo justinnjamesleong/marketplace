@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @user = current_user
+    @auction = Auction.new
   end
 
   # GET /items/1/edit
