@@ -1,0 +1,27 @@
+<%# <p id="notice"><%= notice %></p>
+
+<h1>Itemtypes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @itemtypes.each do |itemtype| %>
+      <tr>
+        <td><%= itemtype.name %></td>
+        <td><%= link_to 'Show', itemtype_path(itemtype) %></td>
+        <td><%= link_to 'Edit', edit_itemtype_path(itemtype) %></td>
+        <td><%= link_to 'Destroy', itemtype_path(itemtype), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Itemtype', new_itemtype_path %> %>

@@ -1,0 +1,18 @@
+
+<%= simple_form_for(@item) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.association :creator  %>
+    <%= f.association :owner  %>
+    <%= f.association :franchise %>
+    <%= f.association :item_type %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

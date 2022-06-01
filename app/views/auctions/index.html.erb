@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Auctions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start time</th>
+      <th>End time</th>
+      <th>Item</th>
+      <th>Minimum bid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @auctions.each do |auction| %>
+      <tr>
+        <td><%= auction.start_time %></td>
+        <td><%= auction.end_time %></td>
+        <td><%= auction.item_id %></td>
+        <td><%= auction.minimum_bid %></td>
+        <td><%= link_to 'Show', auction %></td>
+        <td><%= link_to 'Edit', edit_auction_path(auction) %></td>
+        <td><%= link_to 'Destroy', auction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Auction', new_auction_path %>
