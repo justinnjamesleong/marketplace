@@ -1,14 +1,29 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["popUp", "cards", "credit"];
+  static targets = ["popUp", "auctioncards", "credit", "listcards"];
 
-  open() {
+  opentopup() {
+    // default is item-cards-list
+    this.auctioncardsTarget.classList.add("d-none");
+    this.listcardsTarget.classList.add("d-none");
+    this.popUpTarget.classList.remove("d-none");
     this.popUpTarget.classList.toggle("modal");
-    this.cardsTarget.classList.toggle("d-none");
     // this.popUpTarget.classList.remove("fade");
     console.log(this.popUpTarget.classList);
     console.log(this.cardsTarget.classList);
+  }
+
+  opencreation() {
+    this.listcardsTarget.classList.toggle("d-none");
+    this.auctioncardsTarget.classList.add("d-none");
+    this.popUpTarget.classList.add("d-none");
+  }
+
+  openauction() {
+    this.auctioncardsTarget.classList.toggle("d-none");
+    this.listcardsTarget.classList.add("d-none");
+    this.popUpTarget.classList.add("d-none");
   }
 
   close() {

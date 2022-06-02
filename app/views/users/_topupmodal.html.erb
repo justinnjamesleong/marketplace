@@ -1,20 +1,8 @@
 <div class="row p-3">
-  <div class="modal" data-bidmodal-target="popUp" role="dialog">
+  <div class="modal" data-paymentmodal-target="popUp" role="dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Top Up Credit</h5>
       </div>
-
       <%= render partial: "topupform" %>
-      <%# <form action="" method="post">
-        <div class="modal-body">
-          <label for="credit">Enter amount to top up: </label>
-          <input type="number" id="credit" value=100 min=100 data-paymentmodal-target="credit">
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-action="click->paymentmodal#close">Close</button>
-          <button type="submit" class="btn btn-primary" data-action="click->paymentmodal#topup">Top Up Credit</button>
-        </div>
-      </form> %>
 </div>
