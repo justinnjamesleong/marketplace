@@ -3,7 +3,7 @@ class BidsController < ApplicationController
 
   # GET /bids or /bids.json
   def index
-    @auction = Auction.find(params[:auction_id])
+    # @auction = Auction.find(params[:auction_id])
     @bids = Bid.all
   end
 
@@ -19,6 +19,7 @@ class BidsController < ApplicationController
 
   # GET /bids/1/edit
   def edit
+    @auction = Auction.find(params[:auction_id])
   end
 
   # POST /bids or /bids.json
@@ -42,11 +43,7 @@ class BidsController < ApplicationController
   # DELETE /bids/1 or /bids/1.json
   def destroy
     @bid.destroy
-
-    respond_to do |format|
-      format.html { redirect_to bids_url, notice: "Bid was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to auction_bids_path
   end
 
   private
