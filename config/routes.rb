@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   resources :items
   resources :item_types
   resources :franchises
-  resources :auctions
+  resources :auctions do
+    resources :bids, except: %i[show delete]
+  end
+  resources :bids, only: %i[delete]
   devise_for :users
   resources :users do
     post 'users/:id', to: 'users#topup'

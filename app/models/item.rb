@@ -4,4 +4,5 @@ class Item < ApplicationRecord
   belongs_to :creator, class_name: "User"
   belongs_to :owner, class_name: "User"
   has_one :review
+  has_one_attached :photo
 end

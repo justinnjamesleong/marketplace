@@ -1,8 +1,9 @@
 class BidsController < ApplicationController
-  before_action :set_bid, only: %i[ show edit update destroy ]
+  before_action :set_bid, only: %i[show edit update destroy]
 
   # GET /bids or /bids.json
   def index
+    # @auction = Auction.find(params[:auction_id])
     @bids = Bid.all
   end
 
@@ -12,49 +13,37 @@ class BidsController < ApplicationController
 
   # GET /bids/new
   def new
+    @auction = Auction.find(params[:auction_id])
     @bid = Bid.new
   end
 
   # GET /bids/1/edit
   def edit
+    @auction = Auction.find(params[:auction_id])
   end
 
   # POST /bids or /bids.json
   def create
     @bid = Bid.new(bid_params)
-
-    respond_to do |format|
-      if @bid.save
-        format.html { redirect_to bid_url(@bid), notice: "Bid was successfully created." }
-        format.json { render :show, status: :created, location: @bid }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @bid.errors, status: :unprocessable_entity }
-      end
+    if @bid.save
+      redirect_to auction_bids_path
+    else
+      render 'new'
     end
   end
-
   # PATCH/PUT /bids/1 or /bids/1.json
   def update
-    respond_to do |format|
-      if @bid.update(bid_params)
-        format.html { redirect_to bid_url(@bid), notice: "Bid was successfully updated." }
-        format.json { render :show, status: :ok, location: @bid }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @bid.errors, status: :unprocessable_entity }
-      end
+    if @bid.update(bid_params)
+      redirect_to auction_bids_path(@bid)
+    else
+      render 'edit'
     end
   end
 
   # DELETE /bids/1 or /bids/1.json
   def destroy
     @bid.destroy
-
-    respond_to do |format|
-      format.html { redirect_to bids_url, notice: "Bid was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to auction_bids_path
   end
 
   private
