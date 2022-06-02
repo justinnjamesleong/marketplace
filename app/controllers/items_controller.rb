@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     authorize @item
+    @user = current_user
   end
 
   # GET /items/1/edit
@@ -24,19 +25,18 @@ class ItemsController < ApplicationController
 
   # POST /items or /items.json
   def create
-    @item = Item.new(restaurant_params)
-    @item.user = current_user
+    @item = Item.new(item_params)
+    @item.creator = current_user
+    @item.owner = current_user
+
     authorize @item
+     @user = current_user
 
     # raise
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to item_url(@item), notice: "Item was successfully created." }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+    if @item.save
+      redirect_to item_path(@item)
+    else
+      render 'items/new'
     end
   end
 
@@ -73,6 +73,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :description, :creator_id, :owner_id, :franchise_id, :item_type_id)
+      params.require(:item).permit(:name, :description, :franchise_id, :item_type_id)
     end
 end

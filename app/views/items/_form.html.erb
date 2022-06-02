@@ -4,15 +4,15 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.association :creator, label_method: :username, disabled: true %>
-    <%= f.association :owner, label_method: :username, disabled: true  %>
-    <%= f.association :franchise %>
-    <%= f.association :item_type %>
+    <%= f.input :name, label:"Name of item" %>
+    <%= f.input :description, :input_html => { style:"height:150px" } %>
+    <div class="d-flex justify-content-between">
+      <%= f.association :franchise, :input_html => { style:"width:350px" } %>
+      <%= f.association :item_type, :input_html => { style:"width:350px" } %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-actions d-flex justify-content-center">
+    <%= f.button :submit, class:"btn btn-warning user-button-large" %>
   </div>
 <% end %>

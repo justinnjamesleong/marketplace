@@ -22,8 +22,8 @@
         <td><%= item.description %></td>
         <td><%= item.creator.username %></td>
         <td><%= item.owner.username %></td>
-        <td><%= item.franchise_id %></td>
-        <td><%= item.item_type_id %></td>
+        <td><%= item.franchise.name %></td>
+        <td><%= item.item_type.name %></td>
         <td><%= link_to 'Show', item %></td>
         <% if policy(item).edit? && item.creator == item.owner %>
         <td><%= link_to "Update", edit_item_path(item) %><td>
