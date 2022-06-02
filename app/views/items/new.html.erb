@@ -23,7 +23,4 @@
 
   <%= render 'form', item: @item %>
 
-  <% @auction.item = @item %>
-  <%= render 'auctions/form', auction: @auction %>
-
   <%= link_to 'Back', items_path %>
