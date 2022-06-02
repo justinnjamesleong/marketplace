@@ -25,7 +25,7 @@
         <td><%= item.franchise_id %></td>
         <td><%= item.item_type_id %></td>
         <td><%= link_to 'Show', item %></td>
-        <% if policy(item).edit? %>
+        <% if policy(item).edit? && item.creator == item.owner %>
         <td><%= link_to "Update", edit_item_path(item) %><td>
         <% end %>
          <% if policy(item).destroy? %>
