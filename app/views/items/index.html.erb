@@ -2,36 +2,28 @@
 
 <h1>Items</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Creator</th>
-      <th>Owner</th>
-      <th>Franchise</th>
-      <th>Itemtype</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div>
+    <div class="user-item-cards p-2" data-paymentmodal-target="cards">
     <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.description %></td>
-        <td><%= item.creator.username %></td>
-        <td><%= item.owner.username %></td>
-        <td><%= item.franchise.name %></td>
-        <td><%= item.item_type.name %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="user-item-card-category p-2 bg-light">
+      <div class="user-item-name mx-auto">
+        <% if item.photo.attached? %>
+            <%= cl_image_tag(item.photo.key, class:"img-fluid", style:"height:300px;width:100%")%>
+        <% else %>
+          <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:100%"%>
+        <% end %>
 
-<br>
+        <ul class="pl-0 pt-1" style="list-style-type:none;size">
+
+          <li>Name: <%= item.name %></li>
+          <li>Description: <%= item.description %></li>
+          <li>Creator: <%= item.creator.username %></li>
+          <li>Franchise: <%= item.franchise.name %></li>
+          <%= link_to 'Show', item %>
+        </ul>
+      </div>
+    </div>
+    <% end %>
+  </div>
 
 <%= link_to 'New Item', new_item_path %>
