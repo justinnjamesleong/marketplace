@@ -1,27 +1,33 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :set_item, only: %i[show edit update destroy]
 
   # GET /items or /items.json
   def index
-    @items = Item.all
+    @items = policy_scope(Item)
   end
 
   # GET /items/1 or /items/1.json
   def show
+   # authorize @item
   end
 
   # GET /items/new
   def new
     @item = Item.new
+    authorize @item
   end
 
   # GET /items/1/edit
   def edit
+    authorize @item
   end
 
   # POST /items or /items.json
   def create
-    @item = Item.new(item_params)
+    @item = Item.new(restaurant_params)
+    @item.user = current_user
+    authorize @item
+
     # raise
     respond_to do |format|
       if @item.save
@@ -36,6 +42,7 @@ class ItemsController < ApplicationController
 
   # PATCH/PUT /items/1 or /items/1.json
   def update
+    authorize @item
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to item_url(@item), notice: "Item was successfully updated." }
@@ -49,6 +56,7 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1 or /items/1.json
   def destroy
+    authorize @item
     @item.destroy
 
     respond_to do |format|
