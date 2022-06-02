@@ -5,7 +5,9 @@
   <%= @item.name %>
 </p>
 
-<%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
+<% if @item.photo.attached? %>
+  <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 
 <p>
   <strong>Description:</strong>
