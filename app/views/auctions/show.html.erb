@@ -1,24 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @auction.start_time %>
-</p>
+  <div>
+    <div class="user-item-cards p-2" data-paymentmodal-target="cards">
+    <%= @auction.item.name %>
+    <div class="user-item-card-category p-2 bg-light">
+      <div class="user-item-name mx-auto">
+      <% if @auction.item.photo.attached? %>
+      <%= cl_image_tag @auction.item.photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+        <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:400% crop: :fill"%>
+      <ul class="pl-0 pt-1" style="list-style-type:none;size">
+        <li>Start time: <%= @auction.start_time %></li>
+        <li>End Time: <%=  @auction.end_time %></li>
+        <li> Item: <%= @auction.item_id %></li>
+        <li>Minimum Bid: <%= @auction.minimum_bid %></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+<div data-controller="bidmodal">
+  <%= render "bidform" %>
+</div>
+      </div>
+<table>
 
-<p>
-  <strong>End time:</strong>
-  <%= @auction.end_time %>
-</p>
+<h2> Bids Made so Far</h2>
+  <tr><%  @bids.each do |bid| %>
+    <%= User.find(id=bid.buyer_id).username%>
+    <%= bid.bid_amount %>
+    </tr>
+  <table>
+  <% end %>
 
-<p>
-  <strong>Item:</strong>
-  <%= @auction.item_id %>
-</p>
-
-<p>
-  <strong>Minimum bid:</strong>
-  <%= @auction.minimum_bid %>
-</p>
 
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>

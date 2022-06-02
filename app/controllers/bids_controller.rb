@@ -9,6 +9,7 @@ class BidsController < ApplicationController
 
   # GET /bids/1 or /bids/1.json
   def show
+    @user=User.all
   end
 
   # GET /bids/new
@@ -24,16 +25,20 @@ class BidsController < ApplicationController
 
   # POST /bids or /bids.json
   def create
-    @bid = Bid.new(bid_params)
+    @auction = Auction.find(params[:auction_id])
+    @bid = Bid.new(auction_bid_params)
+    @bid.buyer = current_user
+    @bid.bid_time = Time.now()
+    @bid.auction = @auction
     if @bid.save
-      redirect_to auction_bids_path
+      redirect_to @auction
     else
-      render 'new'
+      render 'auctions/show'
     end
   end
   # PATCH/PUT /bids/1 or /bids/1.json
   def update
-    if @bid.update(bid_params)
+    if @bid.update(auction_bid_params)
       redirect_to auction_bids_path(@bid)
     else
       render 'edit'
@@ -53,7 +58,7 @@ class BidsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def bid_params
-      params.require(:bid).permit(:buyer_id, :bid_amount, :bid_time, :auction_id)
+    def auction_bid_params
+      params.require(:bid).permit( :bid_amount)
     end
 end

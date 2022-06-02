@@ -8,6 +8,8 @@ class AuctionsController < ApplicationController
 
   # GET /auctions/1 or /auctions/1.json
   def show
+    @bids = Bid.where("auction_id=?", params[:id])
+    @bid = Bid.new(auction_id: params[:id])
   end
 
   # GET /auctions/new
