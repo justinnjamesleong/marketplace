@@ -3,7 +3,7 @@ class BidsController < ApplicationController
 
   # GET /bids or /bids.json
   def index
-    # @auction = Auction.find(params[:auction_id])
+    @auction = Auction.find(params[:auction_id])
     @bids = Bid.all
   end
 
@@ -25,6 +25,7 @@ class BidsController < ApplicationController
   # POST /bids or /bids.json
   def create
     @bid = Bid.new(bid_params)
+    @bid.buyer = current_user
     if @bid.save
       redirect_to auction_bids_path
     else

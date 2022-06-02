@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Bids</h1>
+<h1>Bids for <%= @auction.item.name %></h1>
 
 <table>
   <thead>
@@ -8,7 +8,6 @@
       <th>Buyer</th>
       <th>Bid amount</th>
       <th>Bid time</th>
-      <th>Auction</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,10 @@
   <tbody>
     <% @bids.each do |bid| %>
       <tr>
-        <td><%= bid.buyer_id %></td>
+        <td><%= bid.buyer.username %></td>
         <td><%= bid.bid_amount %></td>
         <td><%= bid.bid_time %></td>
-        <td><%= bid.auction_id %></td>
+        <td><%= link_to "edit", edit_auction_bid_path(@auction, bid) %></td>
       </tr>
     <% end %>
   </tbody>
