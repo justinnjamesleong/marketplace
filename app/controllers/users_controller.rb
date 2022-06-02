@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @items = Item.where("creator_id = ?", @user.id)
     @auctions = Auction.all
+    @item = Item.new
+    @user = current_user
   end
 
   def edit
