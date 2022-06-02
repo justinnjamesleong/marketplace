@@ -1,0 +1,21 @@
+
+
+  <div>
+    <div class="user-item-cards p-2" data-paymentmodal-target="auctioncards">
+    <% @auctions.each do |auction| %>
+    <div class="user-item-card-category p-2 bg-light">
+      <div class="user-item-name mx-auto">
+        <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:100%"%>
+      <ul class="pl-0 pt-1" style="list-style-type:none;size">
+        <li>Start time: <%= auction.start_time %></li>
+        <li>End Time: <%=  auction.end_time %></li>
+        <li> Item: <%= auction.item_id %></li>
+        <li>Minimum Bid: <%= auction.minimum_bid %></li>
+        <td><%= link_to 'Show', auction %></td>
+        <! --link_to 'Edit', edit_auction_path auction %>
+        <! --link_to 'Destroy', auction, method: :delete, data:  confirm: 'Are you sure?'  %>
+      </ul>
+      </div>
+    </div>
+    <% end %>
+  </div>
