@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :franchises
   resources :auctions
   devise_for :users
-  resources :users
+  resources :users do
+    post 'users/:id', to: 'users#topup'
+  end
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
