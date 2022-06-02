@@ -5,34 +5,21 @@
   <%= @item.name %>
 </p>
 
-<% if @item.photo.attached? %>
-  <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<div>
+    <div class="user-item-cards p-2" data-paymentmodal-target="cards">
+    <%= @item.name %>
+    <div class="user-item-card-category p-2 bg-light">
+      <div class="user-item-name mx-auto">
+      <% if @item.photo.attached? %>
+      <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+        <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:400% crop: :fill"%>
+      <ul class="pl-0 pt-1" style="list-style-type:none;size">
+        <li>Description: <%= @item.description %></li>
+        <li>Creator: <%=  @item.creator.username %></li>
+        <li> Owner: <%= @item.owner.username %></li>
+        <li> Franchise: <%= @item.franchise_id %></li>
+        <li>Itemtype: <%= @item.item_type_id %></li>
+      </ul>
 
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
-
-<p>
-  <strong>Creator:</strong>
-  <%= @item.creator.username %>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= @item.owner.username %>
-</p>
-
-<p>
-  <strong>Franchise:</strong>
-  <%= @item.franchise_id %>
-</p>
-
-<p>
-  <strong>Itemtype:</strong>
-  <%= @item.item_type_id %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
