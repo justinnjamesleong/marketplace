@@ -1,12 +1,9 @@
       <div class="row">
         <div class="d-flex justify-content-around" >
-          <%= link_to new_item_path do %>
-            <button class="btn btn-dark user-button" style="border-radius:20px">My Creation</button>
-          <% end %>
 
-          <%= link_to root_path do %>
-            <button class="btn btn-dark user-button" style="border-radius:20px">My Auctions</button>
-          <% end %>
+          <button class="btn btn-dark user-button" style="border-radius:20px" data-action="click->paymentmodal#opencreation">My Creation</button>
 
-          <button type="button" class="btn btn-dark user-button" style="border-radius:20px"  data-action="click->paymentmodal#open">Top up credit</button>
+          <button class="btn btn-dark user-button" style="border-radius:20px" data-action="click->paymentmodal#openauction">My Auctions</button>
+
+          <button type="button" class="btn btn-dark user-button" style="border-radius:20px"  data-action="click->paymentmodal#opentopup">Top up credit</button>
       </div>
