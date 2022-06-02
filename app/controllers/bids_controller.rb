@@ -43,8 +43,9 @@ class BidsController < ApplicationController
 
   # DELETE /bids/1 or /bids/1.json
   def destroy
+    @bid = Bid.find(params[:id])
     @bid.destroy
-    redirect_to auction_bids_path
+    redirect_to auctions_path(@bid.restaurant)
   end
 
   private
