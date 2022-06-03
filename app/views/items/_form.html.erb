@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@item) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <%= f.input :name, label:"Name of item" %>
+      <%= f.input :photo, as: :file %>
+      <%= f.input :description, :input_html => { style:"height:150px" } %>
+      <div class="d-flex justify-content-between flex-wrap">
+        <%= f.association :franchise, :input_html => { style:"width:350px" } %>
+        <%= f.association :item_type, :input_html => { style:"width:350px" } %>
+      </div>
+    </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-dark", style:"border-radius:10px; " %>
+  </div>
+<% end %>
