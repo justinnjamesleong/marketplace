@@ -9,12 +9,21 @@
           <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:100%"%>
         <% end %>
 
-        <ul class="pl-0 pt-1" style="list-style-type:none;size">
 
-          <li>Name: <%= item.name %></li>
-          <li>Description: <%= item.description %></li>
-          <li>Item Type: <%= item.item_type.name %></li>
-          <li>Franchise: <%= item.franchise.name %></li>
+          <div class="row">
+          <p>Name: <%= item.name %></p>
+          <p>Description: <%= item.description %></p>
+          <p>Item Type: <%= item.item_type.name %></p>
+          <p>Franchise: <%= item.franchise.name %></p>
+
+          </div>
+          <div class="row">
+            <div class="d-flex justify-content-around">
+              <%= link_to "Create Auction", new_auction_path, class:"btn btn-dark btn-wow", style:  "border-radius:10px;font-size:15px" %>
+              <%= link_to "Edit", edit_item_path(item), class:"btn btn-dark btn-wow", style:  "border-radius:10px;font-size:15px" %>
+              <%= link_to "Delete", item_path(item), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark btn-wow", style:  "border-radius:10px;font-size:15px" %>
+            </div>
+          </div>
         </ul>
       </div>
     </div>
