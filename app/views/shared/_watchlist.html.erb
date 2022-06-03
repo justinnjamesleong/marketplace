@@ -1,0 +1,19 @@
+  <div>
+    <div class="user-item-cards p-2" data-paymentmodal-target="watchlist">
+    <% @bids.each do |bid| %>
+    <div class="user-item-card-category p-2 bg-light">
+      <div class="user-item-name mx-auto">
+
+           <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:100%"%>
+
+        <ul class="pl-0 pt-1" style="list-style-type:none;size">
+
+          <li>Auctioned Item: <%= bid.auction.item.name %></li>
+          <li>Start time: <%= bid.auction.start_time %></li>
+          <li>End Time: <%= bid.auction.start_time %></li>
+          <li>Minimum Bid: <%= bid.auction.minimum_bid %></li>
+        </ul>
+      </div>
+    </div>
+    <% end %>
+  </div>
