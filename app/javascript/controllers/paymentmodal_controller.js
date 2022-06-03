@@ -11,7 +11,7 @@ export default class extends Controller {
   ];
 
   connect() {
-    this.auctioncardsTarget.classList.add("d-none");
+    this.listcardsTarget.classList.add("d-none");
     this.newcreationTarget.classList.add("d-none");
     this.watchlistTarget.classList.add("d-none");
   }
