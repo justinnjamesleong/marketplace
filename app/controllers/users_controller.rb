@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @items = Item.where("creator_id = ?", @user.id)
-    @auctions = Auction.all
+    @auctions = Auction.where(item_id: @items)
     @item = Item.new
     @user = current_user
   end
