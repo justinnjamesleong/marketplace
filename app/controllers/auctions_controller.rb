@@ -15,6 +15,8 @@ class AuctionsController < ApplicationController
   # GET /auctions/new
   def new
     @auction = Auction.new
+    @user = current_user
+    @items = Item.where("creator_id = ?", @user.id)
   end
 
   # GET /auctions/1/edit
@@ -23,13 +25,13 @@ class AuctionsController < ApplicationController
 
   # POST /auctions or /auctions.json
   def create
+    @user = current_user
     @auction = Auction.new(auction_params)
-    # @item = auction_params[:item]
-    # raise
-    if @auction.save
+    if Auction.where(item_id: @auction.item_id).length.zero?
+      @auction.save
       redirect_to auction_path(@auction)
     else
-      render 'new'
+      redirect_to @user, notice: "Auction already exists"
     end
   end
 

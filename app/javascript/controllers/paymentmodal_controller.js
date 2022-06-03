@@ -7,11 +7,13 @@ export default class extends Controller {
     "credit",
     "listcards",
     "newcreation",
+    "watchlist"
   ];
 
   connect() {
     this.auctioncardsTarget.classList.add("d-none");
     this.newcreationTarget.classList.add("d-none");
+    this.watchlistTarget.classList.add("d-none");
   }
 
   opentopup() {
@@ -21,6 +23,7 @@ export default class extends Controller {
     this.auctioncardsTarget.classList.add("d-none");
     this.listcardsTarget.classList.add("d-none");
     this.newcreationTarget.classList.add("d-none");
+    this.watchlistTarget.classList.add("d-none");
   }
 
   opencreation() {
@@ -28,6 +31,7 @@ export default class extends Controller {
     this.newcreationTarget.classList.add("d-none");
     this.auctioncardsTarget.classList.add("d-none");
     this.popUpTarget.classList.add("d-none");
+    this.watchlistTarget.classList.add("d-none");
   }
 
   newcreation() {
@@ -35,6 +39,7 @@ export default class extends Controller {
     this.listcardsTarget.classList.add("d-none");
     this.auctioncardsTarget.classList.add("d-none");
     this.popUpTarget.classList.add("d-none");
+    this.watchlistTarget.classList.add("d-none");
   }
 
   openauction() {
@@ -42,6 +47,15 @@ export default class extends Controller {
     this.listcardsTarget.classList.add("d-none");
     this.popUpTarget.classList.add("d-none");
     this.newcreationTarget.classList.add("d-none");
+    this.watchlistTarget.classList.add("d-none");
+  }
+
+  openwatchlist() {
+    this.watchlistTarget.classList.toggle("d-none");
+    this.listcardsTarget.classList.add("d-none");
+    this.popUpTarget.classList.add("d-none");
+    this.newcreationTarget.classList.add("d-none");
+    this.auctioncardsTarget.classList.add("d-none")
   }
 
   close() {

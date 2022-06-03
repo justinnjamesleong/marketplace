@@ -2,5 +2,4 @@
 
 <%= render 'form', item: @item %>
 
-<%= link_to 'Show', @item %> |
-<%= link_to 'Back', items_path %>
+<%= link_to 'Back', user_path(current_user), class:"btn btn-dark mt-2", style:"border-radius:10px; " %>

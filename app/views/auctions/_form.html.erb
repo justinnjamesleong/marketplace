@@ -4,10 +4,10 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
+    <%= f.association :item, collection: @items %>
+    <%= f.input :minimum_bid %>
     <%= f.input :start_time %>
     <%= f.input :end_time %>
-    <%= f.association :item %>
-    <%= f.input :minimum_bid %>
   </div>
 
   <div class="form-actions">
