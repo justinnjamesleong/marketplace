@@ -1,5 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'shared/auction_list' %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url();">
+  <div class="container">
+    <h1>KickAuction</h1>
+    <p>At an auction keep your mouth shut</p>
+    <%# <a class="btn btn-flat" href="#">Apply now</a> %>
+  </div>
+</div>
+
+  <div>
+    <div class="user-item-cards p-2" data-paymentmodal-target="auctioncards">
+    <% @auctions.each do |auction| %>
+    <div class="user-item-card-category p-2 bg-light">
+      <div class="user-item-name mx-auto">
+        <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid img", style:"height:300px;width:100%"%>
+      <div class="category d-flex justify-content-center">
+      <span><%= auction.item.franchise.name %></span>
+        </div>
+      <div class="title-product">
+        <h3><%= auction.item.name %></h3>
+      </div>
+      <div class="description-prod">
+        <p><%= auction.item.description %></p>
+        <p>Auction end time:</p>
+        <p><%=  auction.end_time %></p>
+      </div>
+      <div class="card-footer">
+        <div class="wcf-left"><span class="price">Min Bid : <%= auction.minimum_bid %></span></div>
+        <div class="wcf-right"><%= link_to 'Bid now', auction, class:"btn btn-dark btn-wow",style:"border-radius:10px;margin-top:-5px;" %></div>
+      </div>
+
+      </div>
+    </div>
+    <% end %>
+  </div>
+
 
 <%= link_to 'New Auction', new_auction_path %>
