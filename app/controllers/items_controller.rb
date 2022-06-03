@@ -50,11 +50,13 @@ class ItemsController < ApplicationController
   # DELETE /items/1 or /items/1.json
   def destroy
     @user = current_user
-    @item.destroy
-
-    respond_to do |format|
-      format.html { redirect_to @user, notice: "Item was successfully destroyed." }
-      format.json { head :no_content }
+    if Auction.where(item_id: @item).length.zero?
+      @item.destroy
+      respond_to do |format|
+        format.html { redirect_to @user, warning: "Item was successfully destroyed." }
+      end
+    else
+      redirect_to @user, notice: "Item on auction cannot be deleted."
     end
   end
 
