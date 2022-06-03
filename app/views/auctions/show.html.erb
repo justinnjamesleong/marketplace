@@ -8,8 +8,9 @@
 
        <% if @auction.item.photo.attached? %>
       <%= cl_image_tag @auction.item.photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
+      <% else %>
         <%= image_tag “https://source.unsplash.com/random/300×300”, class:“img-fluid”, style:“height:300px;width:400% crop: :fill”%>
+      <% end %>
       <div class="category d-flex justify-content-center">
       <span> <%= @auction.item.franchise.name %></span>
         </div>
