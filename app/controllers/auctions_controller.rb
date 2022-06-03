@@ -15,6 +15,8 @@ class AuctionsController < ApplicationController
   # GET /auctions/new
   def new
     @auction = Auction.new
+    @user = current_user
+    @items = Item.where("creator_id = ?", @user.id)
   end
 
   # GET /auctions/1/edit
