@@ -1,6 +1,17 @@
 .banner {
-  .div {
-    display: flex;
-    justify-content: center;
-  }
+  background-color: black;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8uizs68ILN20qwkrG60_A53W0fIleV0URNQ&usqp=CAU');
+  background-size: cover;
+  width: 100vw;
+}
+
+.banner-content {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.banner-text {
+  color: white;
 }
