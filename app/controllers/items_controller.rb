@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
 
     # raise
     if @item.save
-      redirect_to item_path(@item)
+      redirect_to @user, notice: "Item was successfully updated."
     else
       render 'items/new'
     end

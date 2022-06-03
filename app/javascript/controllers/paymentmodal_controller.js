@@ -1,21 +1,38 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["popUp", "auctioncards", "credit", "listcards"];
+  static targets = [
+    "popUp",
+    "auctioncards",
+    "credit",
+    "listcards",
+    "newcreation",
+  ];
+
+  connect() {
+    this.auctioncardsTarget.classList.add("d-none");
+    this.newcreationTarget.classList.add("d-none");
+  }
 
   opentopup() {
     // default is item-cards-list
-    this.auctioncardsTarget.classList.add("d-none");
-    this.listcardsTarget.classList.add("d-none");
     this.popUpTarget.classList.remove("d-none");
     this.popUpTarget.classList.toggle("modal");
-    // this.popUpTarget.classList.remove("fade");
-    console.log(this.popUpTarget.classList);
-    console.log(this.cardsTarget.classList);
+    this.auctioncardsTarget.classList.add("d-none");
+    this.listcardsTarget.classList.add("d-none");
+    this.newcreationTarget.classList.add("d-none");
   }
 
   opencreation() {
     this.listcardsTarget.classList.toggle("d-none");
+    this.newcreationTarget.classList.add("d-none");
+    this.auctioncardsTarget.classList.add("d-none");
+    this.popUpTarget.classList.add("d-none");
+  }
+
+  newcreation() {
+    this.newcreationTarget.classList.toggle("d-none");
+    this.listcardsTarget.classList.add("d-none");
     this.auctioncardsTarget.classList.add("d-none");
     this.popUpTarget.classList.add("d-none");
   }
@@ -24,6 +41,7 @@ export default class extends Controller {
     this.auctioncardsTarget.classList.toggle("d-none");
     this.listcardsTarget.classList.add("d-none");
     this.popUpTarget.classList.add("d-none");
+    this.newcreationTarget.classList.add("d-none");
   }
 
   close() {
