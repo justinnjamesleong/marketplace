@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
  <div class="mx-auto">
-    <div class="user-item-cards p-2" data-paymentmodal-target="auctioncards">
+    <div class="auction-item-cards p-2" data-paymentmodal-target="auctioncards">
     <div></div>
-    <div class="user-item-card-category p-2 bg-light">
-      <div class="user-item-name mx-auto">
+    <div class="auction-item-card-category p-2 bg-light">
+      <div class="auction-item-name mx-auto">
 
        <% if @auction.item.photo.attached? %>
-        <%= cl_image_tag @auction.item.photo.key, height: 300, width: 400, crop: :fill %>
-      <% else %>
+      <%= cl_image_tag @auction.item.photo.key, height: 300, width: 400, crop: :fill %>
+       <% else %>
         <%= image_tag 'https://source.unsplash.com/random/300×300', class:'img-fluid', style:'height:300px;width:400%;crop:fill' %>
       <% end %>
       <div class="category d-flex justify-content-center">

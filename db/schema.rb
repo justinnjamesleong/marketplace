@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2022_06_02_064400) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
-    t.integer "credit", default: 0
+    t.integer "credit"
     t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
