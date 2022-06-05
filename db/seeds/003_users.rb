@@ -3,7 +3,7 @@ puts "seeding users now"
 usernames = %w[john mary sue anish luqman xiaoming takada jean anand karpov]
 default_password = "password"
 usernames.each do |username|
-  puts "creating franchise instance for #{username}"
+  puts "creating user instance for #{username}"
   email = "#{username}@gmail.com"
   new_user = User.new
   new_user.username = username
@@ -11,8 +11,8 @@ usernames.each do |username|
   new_user.email = email
   new_user.save!
 end
-puts "finished itemtype seeding"
-puts "#{ItemType.all.count} itemtypes seeded"
+puts "finished users seeding"
+puts "#{User.all.count} itemtypes seeded"
 
 puts "-------------------------------------------------------------------------"
 puts "phew! getting a little tired"
