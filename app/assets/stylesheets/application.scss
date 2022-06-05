@@ -11,3 +11,14 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+// Font families
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&family=Montserrat+Subrayada:wght@700&display=swap');
+
+h1 {
+  font-family: 'Montserrat Subrayada', sans-serif;
+}
+
+h2 {
+  font-family: 'Kdam Thmor Pro', sans-serif;
+}

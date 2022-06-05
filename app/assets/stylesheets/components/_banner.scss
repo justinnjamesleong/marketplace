@@ -1,7 +1,10 @@
 .banner {
   background-color: black;
   // background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8uizs68ILN20qwkrG60_A53W0fIleV0URNQ&usqp=CAU');
-  background-image: url('https://as2.ftcdn.net/v2/jpg/04/46/93/93/1000_F_446939375_83iP0UYTg5F9vHl6icZwgrEBHXeXMVaU.jpg');
+  // background-image: url('https://as2.ftcdn.net/v2/jpg/04/46/93/93/1000_F_446939375_83iP0UYTg5F9vHl6icZwgrEBHXeXMVaU.jpg');
+  background-image: url(
+    "https://www.pixel4k.com/wp-content/uploads/2019/12/joker-art-2019_1576095743.jpg"
+  );
   background-size: cover;
   width: 100vw;
 }
@@ -9,10 +12,26 @@
 .banner-content {
   display: flex;
   justify-content: space-between;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 40px;
 }
 
 .banner-text {
   color: white;
+  h1 {
+    font-size: 80px;
+    background-color: white;
+    // creating the gradient
+    background-image: linear-gradient(to right,
+    rgba(254,254,254,1) 0%, rgba(255,255,255,1) 58%, rgba(1,1,1,1) 60%);
+    background-size: 100%;
+    background-repeat: repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+#typed {
+  font-family: 'Kdam Thmor Pro', sans-serif;
+  font-size: 24px;
 }
