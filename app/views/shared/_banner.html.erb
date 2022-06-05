@@ -1,10 +1,12 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<%# <div class="banner"> %>
+
+<%# navbar/banner start %>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon banner d-flex flex-column align-items-start">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
+    <%# logo + navbar section start%>
+    <%= link_to root_path , class: "navbar-brand" do %>
       <%= image_tag "kickauction_logo_clear.png" %>
     <% end %>
-
-
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -17,7 +19,7 @@
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Dashboard", current_user ? user_path(current_user) : users_path, class: "nav-link" %>
+            <%= link_to "Profile", current_user ? user_path(current_user) : users_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -36,4 +38,27 @@
       </ul>
     </div>
   </div>
+  <%# logo + navbar section end %>
+
+  <%# banner content %>
+  <div class="banner-content d-flex flex-column">
+    <div class="banner-text" data-controller="typed-js">
+      <h1>KickAuction</h1>
+      <h2>Fight for what you need.</h2>
+    </div>
+      <%# setting up typed js text for animation %>
+      <div id="typed-strings">
+        <h2>You bid. You win.</h2>
+        <h2>At an auction keep your mouth shut</h2>
+      </div>
+    <div class="typed-text-body">
+      <span id="typed"></span>
+    </div>
+  </div>
+      <%# end of typed js script %>
+
 </div>
+
+  <%# navbar section end %>
+
+<%# </div> %>

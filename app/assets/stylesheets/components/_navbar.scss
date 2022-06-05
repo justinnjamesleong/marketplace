@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  // background: white;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +9,18 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.container-fluid {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+// unable to change to white...
+.nav-link {
+  font-family: 'Kdam Thmor Pro', sans-serif;
+  color: white;
+  :hover {
+    color: white;
+  }
 }
