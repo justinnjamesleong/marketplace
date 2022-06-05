@@ -6,7 +6,7 @@ export default class extends Controller {
   connect() {
     var typed = new Typed('#typed', {
       stringsElement: '#typed-strings',
-      typeSpeed: 50,
+      typeSpeed: 20,
       backDelay: 7000,
       loop: true
     });
