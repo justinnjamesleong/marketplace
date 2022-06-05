@@ -14,5 +14,6 @@ Rails.application.routes.draw do
     post 'users/:id', to: 'users#topup'
   end
   root to: 'auctions#index'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
