@@ -28,12 +28,23 @@ class BidsController < ApplicationController
     @auction = Auction.find(params[:auction_id])
     @bid = Bid.new(auction_bid_params)
     @bid.buyer = current_user
-    @bid.bid_time = Time.now()
+    @bid.bid_time = Time.now
     @bid.auction = @auction
-    if @bid.save
+    current_bid = Bid.where(auction_id: @bid.auction_id).order(:bid_amount).last.bid_amount rescue 0
+    top_bidder = Bid.where(auction_id: @bid.auction_id).order(:bid_amount).last.buyer.username rescue "No bidder"
+    previous_bid = Bid.where(auction:@auction).where(buyer:@bid.buyer)[0]
+    if Time.now > @bid.auction.end_time
+      redirect_to @auction, notice: "Auction has ended"
+    elsif @auction.minimum_bid > @bid.bid_amount
+      redirect_to @auction, notice: "Your bid needs to be higher than #{@auction.minimum_bid}"
+    elsif current_bid+1 > @bid.bid_amount
+      redirect_to @auction, notice: "Your bid needs to be higher than #{current_bid+1}"
+    elsif @bid.buyer.credit > auction_bid_params[:bid_amount].to_i
+      previous_bid.destroy if previous_bid
+      @bid.save
       redirect_to @auction
     else
-      render 'auctions/show'
+      redirect_to @auction, notice: "Insufficient credit"
     end
   end
   # PATCH/PUT /bids/1 or /bids/1.json
