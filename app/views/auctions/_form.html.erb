@@ -1,16 +1,18 @@
 
-<%= simple_form_for(@auction) do |f| %>
+<%= simple_form_for([@item, @auction]) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.association :item, collection: @items %>
+
     <%= f.input :minimum_bid %>
-    <%= f.input :start_time %>
-    <%= f.input :end_time %>
+    <%= f.input :start_time, label:"Auction Start Time", default: Time.now() %>
+    <%= f.input :end_time, label:"Auction End Time", default: Time.now() %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+
+    <%= f.button :submit , class:"btn btn-dark", style:"border-radius:10px"%>
+    <%= link_to 'Back', @user ,class:"btn btn-dark", style:"border-radius:10px"%>
   </div>
 <% end %>

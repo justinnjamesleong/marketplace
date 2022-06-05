@@ -17,6 +17,12 @@ class AuctionsController < ApplicationController
     @auction = Auction.new
     @user = current_user
     @items = Item.where("creator_id = ?", @user.id)
+    @item = Item.find(params[:item_id]) rescue false
+    if @items.where(id: params[:item_id]).length.zero?
+      redirect_to @user, notice: "You are not the creator of this item or the item does not exist!"
+    else
+      @item
+    end
   end
 
   # GET /auctions/1/edit
@@ -27,7 +33,10 @@ class AuctionsController < ApplicationController
   def create
     @user = current_user
     @auction = Auction.new(auction_params)
-    if Auction.where(item_id: @auction.item_id).length.zero?
+    @auction.item = Item.find(params[:item_id])
+    if params[:end_time] < params[:start_time]
+      redirect_to new_item_auction(@auction.item), notice: "End Time must be later than start time!"
+    elsif Auction.where(item_id: @auction.item_id).length.zero?
       @auction.save
       redirect_to auction_path(@auction)
     else
@@ -60,6 +69,6 @@ class AuctionsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def auction_params
-    params.require(:auction).permit(:start_time, :end_time, :item_id, :minimum_bid)
+    params.require(:auction).permit(:start_time, :end_time,:minimum_bid)
   end
 end
