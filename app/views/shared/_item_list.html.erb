@@ -3,25 +3,39 @@
     <% @items.each do |item| %>
     <div class="user-item-card-category p-2 bg-light">
       <div class="user-item-name mx-auto">
+
         <% if item.photo.attached? %>
             <%= cl_image_tag(item.photo.key, class:"img-fluid", style:"height:300px;width:100%")%>
         <% else %>
           <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:100%"%>
         <% end %>
 
+      <div class="category d-flex justify-content-center" >
 
-          <div class="row">
-          <p>Name: <%= item.name %></p>
-          <p>Description: <%= item.description %></p>
-          <p>Item Type: <%= item.item_type.name %></p>
-          <p>Franchise: <%= item.franchise.name %></p>
+        <span><%= item.franchise.name %></span>
+      </div>
 
-          </div>
+      <div class="title-product d">
+        <h3><%= item.name %>
+        <% if Auction.where(item:item).length.nonzero? %>
+          <span class="btn btn-warning" style="border-radius:15px;font-size:10px;color:white;">Auctioned</span>
+        <% end %>
+
+        </h3>
+      </div>
+
+      <div class="description-prod">
+        <p><%= item.description %></p>
+        <p><%=  item.item_type.name %></p>
+      </div>
+
+
           <div class="row">
             <div class="d-flex justify-content-around">
-              <%= link_to "Create Auction", new_auction_path, class:"btn btn-dark btn-wow", style:  "border-radius:10px;font-size:15px" %>
-              <%= link_to "Edit", edit_item_path(item), class:"btn btn-dark btn-wow", style:  "border-radius:10px;font-size:15px" %>
-              <%= link_to "Delete", item_path(item), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark btn-wow", style:  "border-radius:10px;font-size:15px" %>
+
+              <%= link_to "Create Auction", new_item_auction_path(item), class:"btn btn-dark btn-wow", style:  "border-radius:10px;font-size:12px" %>
+              <%= link_to "Edit", edit_item_path(item), class:"btn btn-dark btn-wow", style:  "border-radius:10px;font-size:12px" %>
+              <%= link_to "Delete", item_path(item), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-dark btn-wow", style:  "border-radius:10px;font-size:12px" %>
             </div>
           </div>
         </ul>

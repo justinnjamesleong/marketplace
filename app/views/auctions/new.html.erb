@@ -1,5 +1,10 @@
 <h1>New Auction</h1>
 <p>Welcome <%= @user.username %></p>
-<%= render 'form', auction: @auction %>
-
-<%= link_to 'Back', auctions_path %>
+<div class="auction-new-cards p-2" data-controller="newauction">
+  <div class="auction-new-card-category p-2 bg-light" >
+    <%= render 'shared/item_auction_list' %>
+  </div>
+  <div class="auction-new-card-category p-2 bg-light">
+    <%= render 'form', auction: @new_item_auction %>
+  </div>
+</div>

@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   resources :reviews
-  resources :items
+  resources :items do
+    resources :auctions, only: %i[new create]
+  end
   resources :item_types
   resources :franchises
-  resources :auctions do
+  resources :auctions , except: %i[create] do
     resources :bids, except: %i[show delete]
   end
   resources :bids, only: %i[delete]

@@ -4,15 +4,32 @@
     <div class="user-item-card-category p-2 bg-light">
       <div class="user-item-name mx-auto">
 
-           <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:100%"%>
+      <% if bid.auction.item.photo.attached? %>
+        <%= cl_image_tag(bid.auction.item.photo.key, class:"img-fluid", style:"height:300px;width:100%")%>
+      <% else %>
+        <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:100%"%>
+      <% end %>
 
-        <ul class="pl-0 pt-1" style="list-style-type:none;size">
+      <div class="category d-flex justify-content-center" >
+        <span><%= bid.auction.item.franchise.name %></span>
+      </div>
 
-          <li>Auctioned Item: <%= bid.auction.item.name %></li>
-          <li>Start time: <%= bid.auction.start_time %></li>
-          <li>End Time: <%= bid.auction.start_time %></li>
-          <li>Minimum Bid: <%= bid.auction.minimum_bid %></li>
-        </ul>
+      <div class="title-product d">
+        <h3><%= bid.auction.item.name %></h3>
+      </div>
+
+      <div class="description-prod">
+        <p><%= bid.auction.item.description %></p>
+        <p><%=  bid.auction.item.name %></p>
+        <p>End Time: <%= bid.auction.start_time %></p>
+        <p>Minimum Bid: <%= bid.auction.minimum_bid %></p>
+      </div>
+
+                <div class="row">
+            <div class="d-flex justify-content-around">
+              <%= link_to "View", auction_path(bid.auction), class:"btn btn-dark btn-wow", style:  "border-radius:10px;font-size:12px" %>
+            </div>
+          </div>
       </div>
     </div>
     <% end %>

@@ -5,11 +5,10 @@
     <% @auctions.each do |auction| %>
     <div class="user-item-card-category p-2 bg-light">
       <div class="user-item-name mx-auto">
-
-        <% if auction.item.photo.attached? %>
-      <%= cl_image_tag(auction.item.photo.key, class:'img-fluid', style:'height:300px;width:100%') %>
-       <% else %>
-        <%= image_tag 'https://source.unsplash.com/random/300×300', class:'img-fluid', style:'height:300px;width: 100% ;crop:fill' %>
+      <% if auction.item.photo.attached? %>
+        <%= cl_image_tag(auction.item.photo.key, class:"img-fluid", style:"height:300px;width:100%")%>
+      <% else %>
+        <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:100%"%>
       <% end %>
       <div class="category d-flex justify-content-center">
       <span><%= auction.item.franchise.name %></span>
@@ -24,7 +23,7 @@
       </div>
       <div class="card-footer">
         <div class="wcf-left"><span class="price">Min Bid : <%= auction.minimum_bid %></span></div>
-        <div class="wcf-right"><%= link_to 'Bid now', auction, class:"btn btn-dark btn-wow",style:"border-radius:10px;margin-top:-5px;" %></div>
+        <div class="wcf-right"><%= link_to 'View', auction, class:"btn btn-dark btn-wow",style:"border-radius:10px;margin-top:-5px;" %></div>
       </div>
 
       </div>

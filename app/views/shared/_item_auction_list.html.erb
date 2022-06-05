@@ -1,0 +1,21 @@
+      <div data-action="click->newauction#select">
+      <% if @item.photo.attached? %>
+
+        <%= cl_image_tag(@item.photo.key, class:"img-fluid", style:"height:300px;width:100%")%>
+      <% else %>
+        <%= image_tag "https://source.unsplash.com/random/300×300", class:"img-fluid", style:"height:300px;width:100%"%>
+      <% end %>
+
+      <div class="category d-flex justify-content-center" >
+        <span><%= @item.franchise.name %></span>
+      </div>
+
+      <div class="title-product">
+        <h3><%= @item.name %>Myhi</h3>
+      </div>
+
+      <div class="description-prod">
+        <p><%= @item.description %></p>
+        <p><%=  @item.item_type.name %></p>
+      </div>
+      </div>
