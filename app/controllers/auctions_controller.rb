@@ -8,6 +8,7 @@ class AuctionsController < ApplicationController
 
   # GET /auctions/1 or /auctions/1.json
   def show
+    redirect_to root_path, notice: "Auction ID does not exist" if @auction.nil?
     @bids = Bid.where("auction_id=?", params[:id])
     @bid = Bid.new(auction_id: params[:id])
   end
@@ -34,9 +35,7 @@ class AuctionsController < ApplicationController
     @user = current_user
     @auction = Auction.new(auction_params)
     @auction.item = Item.find(params[:item_id])
-    if params[:end_time] < params[:start_time]
-      redirect_to new_item_auction(@auction.item), notice: "End Time must be later than start time!"
-    elsif Auction.where(item_id: @auction.item_id).length.zero?
+    if Auction.where(item_id: @auction.item_id).length.zero?
       @auction.save
       redirect_to auction_path(@auction)
     else
@@ -64,7 +63,7 @@ class AuctionsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_auction
-    @auction = Auction.find(params[:id])
+    @auction = Auction.find(params[:id]) rescue nil
   end
 
   # Only allow a list of trusted parameters through.

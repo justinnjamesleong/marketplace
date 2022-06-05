@@ -6,12 +6,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+
+    redirect_to root_path if @user.nil?
+
     @items = Item.where("creator_id = ?", @user.id)
     @auctions = Auction.where(item_id: @items)
     @bids = Bid.where(buyer_id: @user.id)
     @item = Item.new
-    @user = current_user
   end
 
   def edit
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]) rescue nil
   end
 
   # Only allow a list of trusted parameters through.
