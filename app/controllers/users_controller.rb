@@ -6,11 +6,6 @@ class UsersController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
-    redirect_to root_path if @user.nil?
-
-=======
->>>>>>> 56c145a572c2561fecb83776b9832532add0014c
     redirect_to current_user, notice: "Unauthorized access" if @user.nil? || @user.id != current_user.id
 
     @items = Item.where("creator_id = ?", @user.id) rescue nil
