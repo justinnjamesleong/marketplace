@@ -2,9 +2,7 @@
   background-color: black;
   // background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8uizs68ILN20qwkrG60_A53W0fIleV0URNQ&usqp=CAU');
   // background-image: url('https://as2.ftcdn.net/v2/jpg/04/46/93/93/1000_F_446939375_83iP0UYTg5F9vHl6icZwgrEBHXeXMVaU.jpg');
-  background-image: url(
-    "https://www.pixel4k.com/wp-content/uploads/2019/12/joker-art-2019_1576095743.jpg"
-  );
+  background-image: url("jokerbanner.png");
   background-size: cover;
   width: 100vw;
   height: 20vw;
@@ -30,8 +28,12 @@
     margin-bottom: 0px;
     background-color: white;
     // creating the gradient
-    background-image: linear-gradient(to right,
-    rgba(254,254,254,1) 0%, rgba(255,255,255,1) 58%, rgba(1,1,1,1) 60%);
+    background-image: linear-gradient(
+      to right,
+      rgba(254, 254, 254, 1) 0%,
+      rgba(255, 255, 255, 1) 58%,
+      rgba(1, 1, 1, 1) 60%
+    );
     background-size: 100%;
     background-repeat: repeat;
     background-clip: text;
@@ -40,11 +42,12 @@
   }
   h2 {
     font-size: 24px;
+    margin-top: 60px;
   }
 }
 
 #typed {
-  font-family: 'Kdam Thmor Pro', sans-serif;
+  font-family: "Kdam Thmor Pro", sans-serif;
   font-size: 24px;
 }
 
@@ -58,4 +61,58 @@
   color: white;
   position: absolute;
   bottom: 36px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .banner {
+    height: 50vw;
+  }
+
+  .banner-text {
+    h1 {
+      font-size: 30px;
+      color: white;
+    }
+  }
+
+  #typed {
+    font-family: "Kdam Thmor Pro", sans-serif;
+    font-size: 15px;
+    margin-top: 75px;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .banner {
+    height: 40vw;
+  }
+
+  .banner-text {
+    h1 {
+      font-size: 60px;
+    }
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .banner {
+    height: 30vw;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .banner {
+    height: 20vw;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .banner {
+    height: 20vw;
+  }
 }
