@@ -1,8 +1,61 @@
-<h1>KickCoction</h1>
-<ul>
 
-  <li><%= link_to "Item list", items_path %></li>
-  <li><%= link_to "Auction", auctions_path  %></li>
-  <li><%= link_to "Reviews", reviews_path %></li>
-  <li><%= link_to "User Profile", users_path %></li>
-</ul>
+  <div class="row">
+    <div class="col-sm-3">
+      <h3><%= link_to "Item list", items_path %></h3>
+      <p></p>
+    </div>
+    <div class="col-sm-3">
+      <h3><%= link_to "Auction", auctions_path  %></h3>
+      <p></p>
+    </div>
+    <div class="col-sm-3">
+      <h3><%= link_to "Reviews", reviews_path %></h3>
+      <p></p>
+    </div>
+    <div class="col-sm-3">
+      <h3><%= link_to "User Profile", users_path %></h3>
+      <p></p>
+    </div>
+  </div>
+
+<div class="d-flex justify-content-between">
+  <p class="display-4 fs-2 text-white rounded bg-dark fst-italic"> Top up Credit
+  <p class="display-4 fs-2 text-white rounded bg-dark fst-italic"> List your creation
+  <p class="display-4 fs-2 text-white rounded bg-dark fst-italic"> Auction
+  <p class="display-4 fs-2 text-white rounded bg-dark fst-italic"> Review
+</div>
+
+
+<div class="d-flex">
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+   <div class="col-md-6 px-0">
+    <h1 class="display-4 fst-italic"> Name of Auction </h1>
+   </div>
+  </div>
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark ms-2">
+   <div class="col-md-6 px-0 d-grid gap-2">
+    <%# <h1 class="display-4 fst-italic"> Name of Auction </h1> %>
+    <div class="d-flex">
+      <div>image</div>
+      <div>
+        <div>header</div>
+        <div>rating</div>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div>image</div>
+      <div>
+        <div>header</div>
+        <div>rating</div>
+      </div>
+    </div>
+    <div class="d-flex">
+      <div>image</div>
+      <div>
+        <div>header</div>
+        <div>rating</div>
+      </div>
+    </div>
+   </div>
+  </div>
+</div>
