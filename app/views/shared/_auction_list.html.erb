@@ -1,6 +1,6 @@
 
 
-  <div>
+   <div>
     <div class="user-item-cards p-2" data-paymentmodal-target="auctioncards">
     <% @auctions.each do |auction| %>
     <div class="user-item-card-category p-2 bg-light">
@@ -15,15 +15,20 @@
       <span><%= auction.item.franchise.name %></span>
         </div>
       <div class="title-product">
-        <h3><%= auction.item.name %></h3>
+        <h3><%= auction.item.name %>
+        <% if Time.now - Auction.where(item:auction.item)[0].end_time > 0 %>
+          <span class="btn btn-danger" style="border-radius:15px;font-size:10px;color:white;">Ended</span>
+        <% else %>
+          <span class="btn btn-success" style="border-radius:15px;font-size:10px;color:white;">On-going</span>
+        <% end %>
+        </h3>
       </div>
       <div class="description-prod">
-        <p><%= auction.item.description %></p>
         <p>Auction end time:</p>
         <p><%=  auction.end_time %></p>
       </div>
       <div class="card-footer">
-        <div class="wcf-left"><span class="price">Min Bid : <%= auction.minimum_bid %></span></div>
+        <div class="wcf-left"><span class="price mx-4">Min Bid : <%= auction.minimum_bid %></span></div>
         <div class="wcf-right"><%= link_to 'Bid now', auction, class:"btn btn-dark btn-wow",style:"border-radius:10px;margin-top:-5px;" %></div>
       </div>
 
