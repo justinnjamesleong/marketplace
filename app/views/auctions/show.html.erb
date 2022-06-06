@@ -1,3 +1,85 @@
+
+ <div class="d-flex mx-auto">
+    <div class="auction-new-shows p-2" data-paymentmodal-target="auctioncards">
+      <div class="auction-new-shows-category p-2 bg-light">
+        <div class="auction-item-name d-flex justify-content-center">
+        <% if @auction.item.photo.attached? %>
+        <%= cl_image_tag @auction.item.photo.key, height: 300, width: 400, crop: :fill , class:'img-fluid'%>
+        <% else %>
+          <%= image_tag 'https://source.unsplash.com/random/300×300', class:'img-fluid', style:'height:300px;width:400%;crop:fill' %>
+        <% end %>
+        </div>
+        <div class="category d-flex justify-content-center">
+        <span> <%= @auction.item.franchise.name %></span>
+          </div>
+        <div class="title-product">
+          <h3><%= @auction.item.name %></h3>
+        </div>
+        <div class="description-prod">
+          <p><%= @auction.item.description %></p>
+          <p>Remaining Time:</p>
+            <div id="demo"></div>
+              <script>
+              // Set the date we're counting down to
+              var countDownDate = new Date("<%=@auction.end_time%>").getTime();
+              // Update the count down every 1 second
+              var x = setInterval(function() {
+                // Get today's date and time
+                var now = new Date().getTime();
+                // Find the distance between now and the count down date
+                var distance = countDownDate - now;
+                // Time calculations for days, hours, minutes and seconds
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                // Output the result in an element with id="demo"
+                document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+                // If the count down is over, write some text
+                if (distance < 0) {
+                  clearInterval(x);
+                  document.getElementById("demo").innerHTML = "EXPIRED";
+                }
+              }, 1000);
+              </script>
+            </div>
+          <div class="card-footer">
+            <div class="wcf-left"><span class="price">Min Bid : <%= @auction.minimum_bid %></span></div>
+          </div>
+        </div>
+
+
+      <div class="auction-new-shows-category p-2 bg-light">
+        <div data-controller="bidmodal">
+          <%= render "bidform" %>
+        </div>
+
+        <div class="d-flex flex-grow">
+          <table class="fixed_headers ml-3">
+            <thead>
+              <tr>
+                <th style>Bid Rankings</th>
+                <th>User Name</th>
+                <th>Bid Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <%  sortedbids = @bids.sort_by { |hsh| -hsh[:bid_amount] }%>
+                <%  sortedbids.each_with_index do |bid, index| %>
+                <td><%= index+1%></td>
+                <td><%= User.find(id=bid.buyer_id).username%></td>
+                <td><%= bid.bid_amount %></td>
+                </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+
+
+</div>
+=======
  <div class="mx-auto">
     <div class="auction-item-cards p-2" data-paymentmodal-target="auctioncards">
     <div></div>
@@ -96,3 +178,4 @@ var x = setInterval(function() {
 
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>
+

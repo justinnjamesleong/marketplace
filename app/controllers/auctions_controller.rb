@@ -3,7 +3,7 @@ class AuctionsController < ApplicationController
 
   # GET /auctions or /auctions.json
   def index
-    @auctions = Auction.all
+    @auctions = Auction.all.order(end_time: :desc)
   end
 
   # GET /auctions/1 or /auctions/1.json
