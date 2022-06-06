@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_to root_path if @user.nil
 
     redirect_to current_user, notice: "Unauthorized access" if @user.nil? || @user.id != current_user.id
-
     @items = Item.where("creator_id = ?", @user.id) rescue nil
     @auctions = Auction.where(item_id: @items) rescue nil
     @bids = Bid.where(buyer_id: @user.id) rescue nil
@@ -33,5 +33,10 @@ class UsersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id]) rescue nil
+  end
+
+  # Only allow a list of trusted parameters through.
+  def top_up_params
+    params.require(:user).permit(:credit)
   end
 end
