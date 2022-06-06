@@ -14,7 +14,14 @@
       <span><%= auction.item.franchise.name %></span>
         </div>
       <div class="title-product">
-        <h3><%= auction.item.name %></h3>
+        <h3><%= auction.item.name %>
+        <% if Time.now - Auction.where(item:auction.item)[0].end_time > 0 %>
+          <span class="btn btn-danger" style="border-radius:15px;font-size:10px;color:white;">Ended</span>
+        <% else %>
+          <span class="btn btn-success" style="border-radius:15px;font-size:10px;color:white;">On-going</span>
+        <% end %>
+        </h3>
+
       </div>
       <div class="description-prod">
         <p><%= auction.item.description %></p>
