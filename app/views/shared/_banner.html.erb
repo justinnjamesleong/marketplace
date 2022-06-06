@@ -19,7 +19,7 @@
             <%= link_to "Home", root_path, class: "nav-link",style:"color:white;" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Profile", current_user ? user_path(current_user) : users_path, class: "nav-link",style:"color:white;" %>
+            <%= link_to current_user.username, current_user ? user_path(current_user) : users_path, class: "nav-link",style:"color:white;" %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

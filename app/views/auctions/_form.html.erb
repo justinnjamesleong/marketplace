@@ -5,7 +5,7 @@
 
   <div class="form-inputs">
 
-    <%= f.input :minimum_bid %>
+    <%= f.input :minimum_bid, :placeholder => 0 %>
     <%= f.input :start_time, label:"Auction Start Time", default: Time.now() %>
     <%= f.input :end_time, label:"Auction End Time", default: Time.now() %>
   </div>
