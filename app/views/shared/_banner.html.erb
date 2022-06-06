@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <%# logo + navbar section start%>
     <%= link_to root_path , class: "navbar-brand" do %>
-      <%= image_tag "kickauction_logo_clear.png"%>
+      <%= image_tag "kickauction_logo_clear.png" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,13 +16,13 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" ,style:"color:white;"%>
+            <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to current_user.username, current_user ? user_path(current_user) : users_path, class: "nav-link" ,style:"color:white;"%>
+            <%= link_to "Profile", current_user ? user_path(current_user) : users_path, class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "data:image/png;base64,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", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
@@ -30,35 +30,34 @@
         <% else %>
           <li class="nav-item">
             <div class="d-flex">
-              <%= link_to "Login", new_user_session_path, class: "nav-link",style:"color:white;" %>
-              <%= link_to "Sign up" , new_user_registration_path, class:'nav-link',style:"color:white;" %>
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              <%= link_to "Sign up" , new_user_registration_path, class:'nav-link' %>
             </div>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
+  <%# logo + navbar section end %>
 
+  <%# banner content %>
   <div class="banner-content d-flex flex-column">
     <div class="banner-text" data-controller="typed-js">
       <h1>KickAuction</h1>
-      <div class="typed-text-body">
-        <h2 id="typed"></h2>
-      </div>
+      <h2>Fight for what you need.</h2>
     </div>
       <%# setting up typed js text for animation %>
       <div id="typed-strings">
-        <h2>Fight for what you need.</h2>
         <h2>You bid. You win.</h2>
         <h2>At an auction keep your mouth shut</h2>
       </div>
-
+    <div class="typed-text-body">
+      <span id="typed"></span>
+    </div>
   </div>
-    <%# logo + navbar section end %>
-    <%# banner content %>
-        <%# end of typed js script %>
+      <%# end of typed js script %>
 
-  </div>
+</div>
 
   <%# navbar section end %>
 
