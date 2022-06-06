@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if top_up_params && @user.update(credit: @user.credit += top_up_params["credit"].to_i)
-        format.html { redirect_to user_url(@user), notice: "Credit was successfully topped up!" }
+        format.html { redirect_to user_url(@user), notice: "Your credit was successfully topped up!" }
       else
         render :edit
       end
