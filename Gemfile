@@ -71,3 +71,5 @@ gem 'devise'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'friendly_id', '~> 5.4.0'
