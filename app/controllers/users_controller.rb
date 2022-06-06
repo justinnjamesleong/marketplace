@@ -7,11 +7,11 @@ class UsersController < ApplicationController
 
   def show
 
-    redirect_to current_user, notice: "Unauthorized access" if @user.nil? || @user.id != current_user.id
+    redirect_to root_path if @user.nil?
 
-    @items = Item.where("creator_id = ?", @user.id) rescue nil
-    @auctions = Auction.where(item_id: @items) rescue nil
-    @bids = Bid.where(buyer_id: @user.id) rescue nil
+    @items = Item.where("creator_id = ?", @user.id)
+    @auctions = Auction.where(item_id: @items)
+    @bids = Bid.where(buyer_id: @user.id)
     @item = Item.new
   end
 
