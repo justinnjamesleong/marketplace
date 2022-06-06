@@ -1,8 +1,12 @@
+
+
+puts "KEY"
+puts ENV['CLOUDINARY_URL']
+
 Dir[Rails.root.join('db/seeds/*.rb')].sort.each do |file|
   puts "Processing #{file.split('/').last}"
   require file
 end
-
 # # seeding franchises
 # puts "seeding franchises now"
 # franchises = %w[superman batman spiderman gundam pokemon disney harry\ potter star\ wars middle\ earth james\ bond]
