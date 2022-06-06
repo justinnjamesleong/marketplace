@@ -5,7 +5,7 @@
 
     <div class="form-inputs">
       <%= f.input :name, label:"Name of item" %>
-      <%= f.input :photo, as: :file %>
+      <%= f.input :photo, as: :file, class:"photo-preview" %>
       <%= f.input :description, :input_html => { style:"height:150px" } %>
       <div class="d-flex justify-content-between flex-wrap">
         <%= f.association :franchise, :input_html => { style:"width:350px" } %>
