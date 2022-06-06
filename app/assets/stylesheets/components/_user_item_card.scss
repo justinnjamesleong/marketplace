@@ -4,6 +4,15 @@
   grid-gap: 16px;
 }
 
+.card-footer {
+  position: relative;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .1875rem;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .user-item-cards {
