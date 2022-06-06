@@ -8,9 +8,10 @@
   </div>
   <div class="modal-footer">
     <div class="form-actions">
+
     <% if Time.now > @auction.end_time %>
     <% top_bidder= Bid.where(auction_id: @bid.auction_id).order(:bid_amount).last.buyer.username rescue "No bidder" %>
-      <span style="padding-right:20px">
+      <span style="padding-right:20px" class="btn btn-dark">
       <% if top_bidder == "No bidder" %>
         There was <%= top_bidder %>
         for this auction.
@@ -21,8 +22,9 @@
       </span>
       <button class="btn btn-dark" disabled>Auction has ended</button>
     <% else %>
+
       <%= f.button :submit, 'Bid', class:"btn btn-secondary" %>
-    <% end %>
+      <button type="button" class="btn btn-dark user-button" data-action="click->bidmodal#close">Close</button>
     </div>
   </div>
 <% end %>

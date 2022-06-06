@@ -1,5 +1,5 @@
 .fixed_headers {
-  width: 450px;
+  width: 750px;
   table-layout: fixed;
   border-collapse: collapse;
 }
@@ -11,15 +11,15 @@
 }
 .fixed_headers td:nth-child(1),
 .fixed_headers th:nth-child(1) {
-  min-width: 150px;
+  min-width: 200px;
 }
 .fixed_headers td:nth-child(2),
 .fixed_headers th:nth-child(2) {
-  min-width: 150px;
+  min-width: 200px;
 }
 .fixed_headers td:nth-child(3),
 .fixed_headers th:nth-child(3) {
-  width: 150px;
+  width: 350px;
 }
 .fixed_headers thead {
   background-color: #333;
@@ -34,7 +34,6 @@
   overflow: auto;
   width: 100%;
   height: 300px;
-  background-color: white;
 }
 .fixed_headers tbody tr:nth-child(even) {
   background-color: #ddd;
