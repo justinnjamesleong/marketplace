@@ -6,9 +6,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_to root_path if @user.nil
 
     redirect_to root_path if @user.nil?
-
     @items = Item.where("creator_id = ?", @user.id)
     @auctions = Auction.where(item_id: @items)
     @bids = Bid.where(buyer_id: @user.id)
