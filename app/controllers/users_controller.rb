@@ -29,13 +29,9 @@ class UsersController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.friendly.find(params[:id]) rescue nil
-  end
-
-  # Only allow a list of trusted parameters through.
-  def top_up_params
-    params.require(:user).permit(:credit)
+    @user = User.find(params[:id]) rescue nil
   end
 end
