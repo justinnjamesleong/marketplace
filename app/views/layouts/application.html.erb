@@ -13,10 +13,13 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' unless current_page?(
+    <%= render 'shared/navbar' unless current_page?(root_path)%>
+    <%= render 'shared/navbar' unless current_page?(new_user_session_path)%>
+    <%= render 'shared/navbar' unless current_page?(new_user_registration_path)%>
+
+    <%= render 'shared/banner' if current_page?(
       root_path || new_user_session_path || new_user_registration_path
-      )%>
-    <%= render 'shared/banner' if current_page?(root_path) %>
+    ) %>
     <%= render 'shared/flashes' %>
     <div class="container">
       <div class="row">
